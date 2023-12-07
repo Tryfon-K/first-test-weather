@@ -6,6 +6,8 @@ test('Check highest and lowest temperatures in Brno', async ({ page }) => {
     let lowTemp;
 
     await page.goto('https://www.metoffice.gov.uk/');
+    //wait for cookies panel to animate
+    await page.waitForTimeout(1000);
     //click reject cookies if cookie dialog is visible
     if (await page.locator('id=ccc-reject-settings').isVisible())
         await page.locator('id=ccc-reject-settings').click();
